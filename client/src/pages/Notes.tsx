@@ -23,7 +23,7 @@ export default function Notes() {
       <section className="screen notes-screen" aria-labelledby="notes-title">
         <div className="screen-heading compact-heading">
           <p className="chapter-label">chapter two</p>
-          <h1 id="notes-title">Three little reminders,<br /><em>Isbah.</em></h1>
+          <h1 id="notes-title">Three little reminders,<br /></h1>
           <p>Tap every folded note. The next surprise is waiting quietly in the sky.</p>
         </div>
         <div className="note-stack" aria-label="Three birthday notes to reveal">

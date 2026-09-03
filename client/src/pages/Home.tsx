@@ -18,7 +18,7 @@ export default function Home() {
           <h1 id="welcome-title">Dear <em>Isbah,</em></h1>
           <p className="welcome-message">Today has a little more sparkle in it because it is yours. This is a tiny birthday journey, saved especially for you.</p>
           <button className="seal-button" onClick={() => setLocation("/little-notes")}>
-            <img src={logo} alt="" /> <span>Start your surprise</span> <ArrowRight size={16} />
+             <span>Start your surprise</span> <ArrowRight size={16} />
           </button>
           <p className="welcome-meta"><Sparkles size={14} /> Four small chapters. Take your time.</p>
         </motion.div>

@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Heart, Sparkles } from "lucide-react";
 import { useLocation } from "wouter";
 import BirthdayShell from "@/components/BirthdayShell";
+import { usePhotoMemories } from "@/contexts/PhotoMemoryContext";
 
 const captions = ["a little sparkle", "a favorite moment", "more to come"];
-const photos = ["/media/isbah-memory-1.jpeg", "/media/isbah-memory-2.jpeg", "/media/isbah-memory-3.jpeg"];
 
 export default function Kite() {
   const [, setLocation] = useLocation();
+  const { photos } = usePhotoMemories();
   return (
     <BirthdayShell step={3} label="A kite full of memories for Isbah">
       <section className="screen kite-screen" aria-labelledby="kite-title">
@@ -27,7 +28,7 @@ export default function Kite() {
           </motion.div>
           <div className="kite-thread" aria-hidden="true" />
           <motion.div className="kite-tail kite-tail-wave" aria-label="A linked, waving photo tail of birthday memories" animate={{ x: [0, 7, -5, 0], rotate: [-1, 2.5, -1.5, -1] }} transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut" }}>
-            <svg className="kite-tail-path" viewBox="0 0 220 250" fill="none" aria-hidden="true"><path d="M92 0 C132 25 63 54 148 91 C190 120 47 162 97 220" stroke="#cf4c7b" strokeWidth="2" strokeDasharray="7 7" /><circle cx="92" cy="0" r="4" fill="#ffc6d7" /><circle cx="148" cy="91" r="4" fill="#ffc6d7" /><circle cx="97" cy="220" r="4" fill="#ffc6d7" /></svg>
+            <svg className="kite-tail-path" viewBox="0 0 220 250" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M92 0 C132 25 63 54 148 91 C190 120 47 162 97 220" stroke="#cf4c7b" strokeWidth="2" strokeDasharray="7 7" /><circle cx="92" cy="0" r="4" fill="#ffc6d7" /><circle cx="148" cy="91" r="4" fill="#ffc6d7" /><circle cx="97" cy="220" r="4" fill="#ffc6d7" /></svg>
             {photos.map((photo, index) => <motion.figure className={`kite-photo kite-photo-${index + 1}`} key={photo} initial={{ opacity: 1, y: 0, rotate: index === 1 ? 5 : -6 }} animate={{ y: [0, 5, 0], rotate: index === 1 ? [5, 9, 5] : [-6, -2, -6] }} transition={{ delay: 0.12 + index * 0.1, duration: 2.6 + index * 0.25, repeat: Infinity, ease: "easeInOut" }}><img src={photo} alt={`A birthday memory for Isbah, photo ${index + 1}`} /><figcaption>{captions[index]}</figcaption></motion.figure>)}
           </motion.div>
         </motion.div>
