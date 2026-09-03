@@ -20,7 +20,7 @@ export default function Home() {
           <button className="seal-button" onClick={() => setLocation("/little-notes")}>
             <img src={logo} alt="" /> <span>Start your surprise</span> <ArrowRight size={16} />
           </button>
-          <p className="tap-note"><Sparkles size={13} /> Four small chapters. Take your time.</p>
+          <p className="welcome-meta"><Sparkles size={14} /> Four small chapters. Take your time.</p>
         </motion.div>
 
         <motion.div className="welcome-art" initial={{ opacity: 0, scale: 0.96, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.55, delay: 0.08 }}>

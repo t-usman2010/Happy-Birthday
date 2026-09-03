@@ -1,5 +1,5 @@
 /* Petal Postcard design reminder: this route creates a playful handwritten-notes moment for Isbah,
-   using three tap-to-reveal paper cards that invite interaction before the wrapped gift scene. */
+   using three tap-to-reveal paper cards that unlock the hidden kite-memory scene. */
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Heart, Sparkles, Star } from "lucide-react";
 import { useState } from "react";
@@ -16,7 +16,6 @@ export default function Notes() {
   const [, setLocation] = useLocation();
   const [opened, setOpened] = useState<number[]>([]);
   const allOpened = opened.length === notes.length;
-
   const reveal = (index: number) => setOpened((current) => current.includes(index) ? current : [...current, index]);
 
   return (
@@ -25,40 +24,22 @@ export default function Notes() {
         <div className="screen-heading compact-heading">
           <p className="chapter-label">chapter two</p>
           <h1 id="notes-title">Three little reminders,<br /><em>Isbah.</em></h1>
-          <p>Tap every folded note. Each one has been saved for you.</p>
+          <p>Tap every folded note. The next surprise is waiting quietly in the sky.</p>
         </div>
-
         <div className="note-stack" aria-label="Three birthday notes to reveal">
           {notes.map(({ title, body, icon: Icon, color }, index) => {
             const isOpen = opened.includes(index);
-            return (
-              <motion.button
-                className={`interactive-note ${color} ${isOpen ? "is-open" : ""}`}
-                key={title}
-                onClick={() => reveal(index)}
-                whileTap={{ scale: 0.98 }}
-                aria-pressed={isOpen}
-              >
-                <span className="note-pin"><Icon size={17} fill="currentColor" /></span>
-                <AnimatePresence mode="wait">
-                  {isOpen ? (
-                    <motion.span className="note-inside" key="inside" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22 }}>
-                      <strong>{title}</strong><small>{body}</small>
-                    </motion.span>
-                  ) : (
-                    <motion.span className="note-cover" key="cover" exit={{ opacity: 0, y: -5 }}><small>tap to unfold</small><strong>{index + 1}</strong></motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            );
+            return <motion.button className={`interactive-note ${color} ${isOpen ? "is-open" : ""}`} key={title} onClick={() => reveal(index)} whileTap={{ scale: 0.98 }} aria-pressed={isOpen}>
+              <span className="note-pin"><Icon size={17} fill="currentColor" /></span>
+              <AnimatePresence mode="wait">
+                {isOpen ? <motion.span className="note-inside" key="inside" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22 }}><strong>{title}</strong><small>{body}</small></motion.span> : <motion.span className="note-cover" key="cover" exit={{ opacity: 0, y: -5 }}><small>tap to unfold</small><strong>{index + 1}</strong></motion.span>}
+              </AnimatePresence>
+            </motion.button>;
           })}
         </div>
-
         <div className="page-actions two-actions">
           <button className="text-button" onClick={() => setLocation("/")}><ArrowLeft size={15} /> Back</button>
-          <button className="seal-button" onClick={() => setLocation("/gift")} disabled={!allOpened}>
-            <span>{allOpened ? "Find your gift" : `${opened.length}/3 notes opened`}</span> <ArrowRight size={16} />
-          </button>
+          <button className="seal-button" onClick={() => setLocation("/kite")} disabled={!allOpened}><span>{allOpened ? "Let the kite fly" : `${opened.length}/3 notes opened`}</span> <ArrowRight size={16} /></button>
         </div>
       </section>
     </BirthdayShell>

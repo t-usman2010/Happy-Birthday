@@ -6,17 +6,18 @@ import { Route, Switch } from "wouter";
 import AudioPlayer from "./components/AudioPlayer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Gift from "./pages/Gift";
 import Home from "./pages/Home";
+import Kite from "./pages/Kite";
 import Notes from "./pages/Notes";
 import Wish from "./pages/Wish";
+import { PhotoMemoryProvider } from "./contexts/PhotoMemoryContext";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/little-notes" component={Notes} />
-      <Route path="/gift" component={Gift} />
+      <Route path="/kite" component={Kite} />
       <Route path="/wish" component={Wish} />
       <Route component={Home} />
     </Switch>
@@ -27,11 +28,13 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-          <AudioPlayer />
-        </TooltipProvider>
+        <PhotoMemoryProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+            <AudioPlayer />
+          </TooltipProvider>
+        </PhotoMemoryProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

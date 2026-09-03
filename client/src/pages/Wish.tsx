@@ -27,7 +27,7 @@ export default function Wish() {
         </motion.div>
 
         <div className="wish-copy-page">
-          <p className="chapter-label"><Sparkles size={13} /> final chapter</p>
+          <p className="chapter-label"><Sparkles size={13} /> chapter four · final wish</p>
           <h1 id="wish-title">Make a wish, <em>Isbah.</em></h1>
           <p>For the moments that are still on their way. For all the beautiful things that have your name written on them.</p>
           <button className="seal-button cake-action" onClick={makeWish}><CakeSlice size={16} /><span>{wishIndex === null ? "Tap the candle" : "Make another wish"}</span></button>
