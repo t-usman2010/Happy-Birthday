@@ -23,7 +23,7 @@ export default function Kite() {
           <span className="sky-doodle doodle-one">✦</span><span className="sky-doodle doodle-two">♡</span><span className="sky-doodle doodle-three">✦</span>
           <motion.div className="kite-object" animate={{ y: [0, -9, 0], rotate: [-1, 1.5, -1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
             <div className="kite-ribbon kite-ribbon-left" /><div className="kite-ribbon kite-ribbon-right" />
-            <div className="kite-paper"><span className="kite-corner kite-corner-one" /><span className="kite-corner kite-corner-two" /><div className="kite-letter"><Heart size={16} fill="currentColor" /><p>Isbah, may this year bring you closer to every dream that feels like home. You are cherished, capable, and deeply loved. Beautiful things are coming.</p></div></div>
+            <div className="kite-paper"><span className="kite-corner kite-corner-one" /><span className="kite-corner kite-corner-two" /><div className="kite-letter"><Heart size={16} fill="currentColor" /><p>Happy birthday! Hope your day is as amazing as you are. Here's to another year full of good memories, laughter, and everything you've been wishing for.  🎂</p></div></div>
             <div className="kite-knot"><Heart size={13} fill="currentColor" /></div>
           </motion.div>
           <div className="kite-thread" aria-hidden="true" />
