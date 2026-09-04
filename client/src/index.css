@@ -667,29 +667,28 @@ button:focus-visible {
   z-index: 2;
   left: 50%;
   top: 50%;
-  width: 60%;
+  width: 70%;
   transform: translate(-50%, -50%);
   color: #fffaf8;
   text-align: center;
-  padding: 8px 8px;
+  padding: 10px 12px;
   border-radius: 16px;
-  background: rgba(255, 246, 249, 0.38);
-  box-shadow: 0 4px 12px rgba(128, 34, 70, 0.12);
-  backdrop-filter: blur(2px);
+  background: rgba(255, 246, 249, 0.84);
+  box-shadow: 0 4px 12px rgba(76, 13, 39, 0.2);
 }
 
 .kite-letter > svg {
   margin-bottom: 5px;
-  color: #ffe9ef;
+  /* color: #7b1d49; */
 }
 
 .kite-letter p {
   margin: 0;
   font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(0.53rem, 2.3vw, 0.68rem);
+  font-size: clamp(0.6rem, 2.3vw, 0.76rem);
   font-weight: 400;
-  line-height: 1.32;
-  color: #5f1a3b;
+  line-height: 1.42;
+  color: #1f0a16;
 }
 
 .kite-corner {
@@ -765,7 +764,7 @@ button:focus-visible {
   position: absolute;
   z-index: 4;
   top: 426px;
-  left: 50%;
+  left: calc(50% - 53px);
   width: 220px;
   height: 260px;
   transform: translateX(-50%);
@@ -1342,7 +1341,7 @@ button:focus-visible {
   }
 
   .kite-letter {
-    width: 56%;
+    width: 70%;
     padding: 10px 10px;
     border-radius: 18px;
   }

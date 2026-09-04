@@ -2,7 +2,7 @@
    in the sharing step, only revealed as part of Isbah’s airborne memory tail. */
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
-const fallbackPhotos = ["/media/isbah-memory-1.jpeg", "/media/isbah-memory-2.jpeg", "/media/isbah-memory-3.jpeg"];
+const fallbackPhotos = ["/media/isbah-memory-1.jpeg", "/media/isbah-memory-2.jpeg", "/media/isbah.mp4"];
 
 type PhotoMemoryContextValue = {
   photos: string[];
