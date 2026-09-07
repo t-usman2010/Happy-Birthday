@@ -193,21 +193,7 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Top Satin Ribbon & Bow */}
-              <div className="envelope-ribbon" aria-hidden="true">
-                <span className="ribbon-tail left" />
-                <span className="ribbon-center">
-                  <img
-                    src="/media/petal-bow-heart-logo.png"
-                    alt=""
-                    className="ribbon-seal-logo"
-                    width="44"
-                    height="44"
-                  />
-                </span>
-                <span className="ribbon-tail right" />
-              </div>
-
+             
               {/* Letter Headings */}
               <div className="envelope-header">
                 <span className="envelope-badge">
@@ -224,7 +210,7 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
                 <div className="progress-info-row">
                   <span className="progress-status-text">
                     <Heart size={12} fill="currentColor" className="text-berry animate-pulse" />{" "}
-                    {isAssetsLoaded ? "All photos & surprises prepared!" : STATUS_MESSAGES[statusIndex]}
+                    {isAssetsLoaded ? "Your Surprises Prepared!" : STATUS_MESSAGES[statusIndex]}
                   </span>
                   <span className="progress-percentage">{progress}%</span>
                 </div>
@@ -263,7 +249,7 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
                     whileTap={{ scale: 0.97 }}
                   >
                     <span className="unseal-sparkle">✦</span>
-                    <span>Unseal Isbah's Postcard</span>
+                    <span>Reveal Isbah's Suprise</span>
                     <ArrowRight size={17} />
                   </motion.button>
                 ) : (
