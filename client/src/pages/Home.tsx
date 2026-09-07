@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Heart, Sparkles } from "lucide-react";
 import { useLocation } from "wouter";
 import BirthdayShell from "@/components/BirthdayShell";
-
-const logo = "/media/petal-bow-heart-logo.png";
+import LoadedImage from "@/components/LoadedImage";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -24,7 +23,15 @@ export default function Home() {
         </motion.div>
 
         <motion.div className="welcome-art" initial={{ opacity: 0, scale: 0.96, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.55, delay: 0.08 }}>
-          <div className="welcome-art-frame"><img src="/media/petal-postcard-hero.jpg" alt="Pink birthday gifts, bows, flowers, and a heart-shaped keepsake" /></div>
+          <div className="welcome-art-frame">
+            <LoadedImage
+              src="/media/petal-postcard-hero.jpg"
+              alt="Pink birthday gifts, bows, flowers, and a heart-shaped keepsake for Isbah"
+              fetchPriority="high"
+              loading="eager"
+              containerClassName="welcome-loaded-hero"
+            />
+          </div>
           <div className="taped-note note-top"><span>for a very</span><strong>lovely<br />girl</strong></div>
           <div className="taped-note note-bottom"><strong>open me<br />slowly</strong><span>something sweet is inside</span></div>
           <Sparkles className="art-sparkle sparkle-one" size={28} aria-hidden="true" />

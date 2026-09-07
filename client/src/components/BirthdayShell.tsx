@@ -1,8 +1,9 @@
 /* Petal Postcard design reminder: this shared frame makes every route feel like one chapter of a
    hand-prepared birthday card, with an ownable bow-heart seal and clear mobile progress cues. */
-import { Heart, Sparkles } from "lucide-react";
+import { Heart, MailOpen } from "lucide-react";
 import { ReactNode, useEffect } from "react";
 import { useLocation } from "wouter";
+import { useLoader } from "@/contexts/LoaderContext";
 
 const logo = "/media/petal-bow-heart-logo.png";
 
@@ -14,6 +15,7 @@ type BirthdayShellProps = {
 
 export default function BirthdayShell({ children, step, label }: BirthdayShellProps) {
   const [location, setLocation] = useLocation();
+  const { openLoader } = useLoader();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -24,8 +26,18 @@ export default function BirthdayShell({ children, step, label }: BirthdayShellPr
       <div className="paper-grain" aria-hidden="true" />
       <header className="journey-header">
         <button className="journey-brand" onClick={() => setLocation("/")} aria-label="Return to Isbah's birthday home">
-          <img src={logo} alt="" />
+          <img src={logo} alt="Isbah's birthday ribbon seal" width="32" height="32" />
           <span><strong>Happy Birthday, Isbah</strong><small>a little surprise</small></span>
+        </button>
+
+        <button
+          className="journey-envelope-btn"
+          onClick={() => openLoader()}
+          aria-label="Re-open interactive birthday envelope"
+          title="Interactive Envelope"
+        >
+          <MailOpen size={14} />
+          <span>Envelope</span>
         </button>
       </header>
       <div className="journey-progress" aria-label={`Journey step ${step} of 4: ${label}`}>

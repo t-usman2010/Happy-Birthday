@@ -45,6 +45,7 @@ export default function AudioPlayer() {
       window.removeEventListener("keydown", handleInteraction, { capture: true });
       window.removeEventListener("scroll", handleInteraction, { capture: true });
       window.removeEventListener("click", handleInteraction, { capture: true });
+      window.removeEventListener("birthday:unseal", handleInteraction);
     };
 
     // Attach listeners with capture: true so they trigger before anything else
@@ -53,6 +54,7 @@ export default function AudioPlayer() {
     window.addEventListener("keydown", handleInteraction, { capture: true });
     window.addEventListener("scroll", handleInteraction, { capture: true });
     window.addEventListener("click", handleInteraction, { capture: true });
+    window.addEventListener("birthday:unseal", handleInteraction);
 
     // Attempt immediately in case permissions already granted
     attemptAutoplay();
@@ -119,7 +121,7 @@ export default function AudioPlayer() {
 
         {isExpanded && (
           <div className="audio-details">
-            <div className="audio-track-label"><span>Yusra’s Petal Waltz</span><small>instrumental birthday mix</small></div>
+            <div className="audio-track-label"><span>Isbah’s Petal Waltz</span><small>instrumental birthday mix</small></div>
             <div className="audio-volume-row">
               <button className="audio-mute-control" onClick={() => setIsMuted((current) => !current)} aria-label={isMuted ? "Unmute music" : "Mute music"}>{isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}</button>
               <input type="range" min="0" max="1" step="0.05" value={isMuted ? 0 : volume} onChange={(event) => changeVolume(Number(event.target.value))} aria-label="Music volume" />
