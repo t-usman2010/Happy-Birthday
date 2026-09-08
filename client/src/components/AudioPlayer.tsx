@@ -1,5 +1,5 @@
 /* Petal Postcard design reminder: the player is a small tactile keepsake control, not generic media
-  chrome—use the bow-heart mark, warm paper materials, and clear touch-friendly controls for Yusra. */
+  chrome—use the bow-heart mark, warm paper materials, and clear touch-friendly controls for Isbah. */
 import { Music2, Pause, Play, Sparkles, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 

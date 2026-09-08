@@ -249,7 +249,7 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
                     whileTap={{ scale: 0.97 }}
                   >
                     <span className="unseal-sparkle">✦</span>
-                    <span>Reveal Isbah's Suprise</span>
+                    <span>Reveal Isbah's Surprise</span>
                     <ArrowRight size={17} />
                   </motion.button>
                 ) : (
