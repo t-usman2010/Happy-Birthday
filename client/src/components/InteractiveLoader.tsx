@@ -10,7 +10,7 @@ const ASSETS_TO_PRELOAD = [
   { url: "/media/petal-postcard-hero.jpg", label: "Birthday Hero Postcard" },
   { url: "/media/petal-bow-heart-logo.png", label: "Satin Ribbon Seal" },
   { url: "/media/pink-birthday-cake.jpg", label: "Birthday Candle Cake" },
-  { url: "/media/isbah-memory-1.jpeg", label: "Cherished Memory 1" },
+  { url: "/media/isbah-memory-1.jpg", label: "Cherished Memory 1" },
   { url: "/media/isbah-memory-2.jpeg", label: "Cherished Memory 2" },
   { url: "/media/isbah-memory-3.jpeg", label: "Cherished Memory 3" },
 ];
@@ -262,7 +262,7 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
             </motion.div>
 
             <p className="loader-foot-note">
-              Crafted with love · Made for Isbah
+              Created By Taha Usman For Birthday Princess 🎀
             </p>
           </div>
         </motion.div>

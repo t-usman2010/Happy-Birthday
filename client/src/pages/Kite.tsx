@@ -9,7 +9,7 @@ import { usePhotoMemories } from "@/contexts/PhotoMemoryContext";
 
 const captions = ["a little sparkle", "a favorite moment", "more to come"];
 const fallbackMemories = [
-  "/media/isbah-memory-1.jpeg",
+  "/media/isbah-memory-1.jpg",
   "/media/isbah-memory-2.jpeg",
   "/media/isbah-memory-3.jpeg",
 ];
