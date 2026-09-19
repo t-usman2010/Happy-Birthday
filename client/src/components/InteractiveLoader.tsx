@@ -12,7 +12,6 @@ const ASSETS_TO_PRELOAD = [
   { url: "/media/pink-birthday-cake.jpg", label: "Birthday Candle Cake" },
   { url: "/media/isbah-memory-1.jpg", label: "Cherished Memory 1" },
   { url: "/media/isbah-memory-2.jpeg", label: "Cherished Memory 2" },
-  { url: "/media/isbah-memory-3.jpeg", label: "Cherished Memory 3" },
 ];
 
 const STATUS_MESSAGES = [
@@ -64,16 +63,17 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
 
   // Preload all critical assets
   useEffect(() => {
-    let loadedCount = 0;
-    const total = ASSETS_TO_PRELOAD.length;
+    let settledCount = 0;
+    const total = ASSETS_TO_PRELOAD.length + 2;
+    let finishTimer: ReturnType<typeof setTimeout> | undefined;
 
     const updateProgress = () => {
-      loadedCount++;
-      const calculated = Math.min(100, Math.round((loadedCount / total) * 85) + 15);
+      settledCount++;
+      const calculated = Math.min(100, Math.round((settledCount / total) * 85) + 15);
       setProgress((prev) => Math.max(prev, calculated));
 
-      if (loadedCount >= total) {
-        setTimeout(() => {
+      if (settledCount >= total) {
+        finishTimer = setTimeout(() => {
           setProgress(100);
           setIsAssetsLoaded(true);
         }, 350);
@@ -82,33 +82,41 @@ export default function InteractiveLoader({ onComplete, isOpen }: InteractiveLoa
 
     // Preload audio
     const audio = new Audio();
-    audio.src = "/media/isbah-birthday-petal-waltz.mp3";
     audio.preload = "auto";
+    audio.addEventListener("canplaythrough", updateProgress, { once: true });
+    audio.addEventListener("error", updateProgress, { once: true });
+    audio.src = "/media/isbah-birthday-petal-waltz.mp3";
 
     // Preload video for the kite page
     const video = document.createElement("video");
-    video.src = "/media/isbah.mp4";
     video.preload = "auto";
+    video.addEventListener("canplay", updateProgress, { once: true });
+    video.addEventListener("error", updateProgress, { once: true });
+    video.src = "/media/isbah.mp4";
 
     // Preload all images
     ASSETS_TO_PRELOAD.forEach(({ url }) => {
       const img = new Image();
-      img.src = url;
-      if (img.complete && img.naturalWidth > 0) {
+      let isSettled = false;
+      const settleImage = () => {
+        if (isSettled) return;
+        isSettled = true;
         updateProgress();
-      } else {
-        img.onload = updateProgress;
-        img.onerror = updateProgress; // Don't block if network hiccup
-      }
+      };
+
+      img.onload = settleImage;
+      img.onerror = settleImage;
+      img.src = url;
+      if (img.complete) settleImage();
     });
 
-    // Fallback safety timer: ensure loader never hangs if connection is slow
-    const safetyTimer = setTimeout(() => {
-      setProgress(100);
-      setIsAssetsLoaded(true);
-    }, 4000);
-
-    return () => clearTimeout(safetyTimer);
+    return () => {
+      if (finishTimer) clearTimeout(finishTimer);
+      audio.removeEventListener("canplaythrough", updateProgress);
+      audio.removeEventListener("error", updateProgress);
+      video.removeEventListener("canplay", updateProgress);
+      video.removeEventListener("error", updateProgress);
+    };
   }, []);
 
   // Handle interactive screen taps/clicks
